@@ -32,7 +32,9 @@ const fn = (a: number, b: number, c: number) => {
 
     console.log(`Combined empanadas array with new prices: ${combinedEmpanadas}`);
 
+    combinedEmpanadas.sort((a, b) => b - a)
+    console.log(`Combined empanadas array sorted from high to low: ${combinedEmpanadas}`);
  };
 
  //Trying out the function
- fn(6, 2, 1)
+ fn(2, 6, 1)

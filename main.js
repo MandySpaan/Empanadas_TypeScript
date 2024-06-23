@@ -21,6 +21,8 @@ var fn = function (a, b, c) {
         combinedEmpanadas.push(arrayEmpanadas[0]);
     }
     console.log("Combined empanadas array with new prices: ".concat(combinedEmpanadas));
+    combinedEmpanadas.sort(function (a, b) { return b - a; });
+    console.log("Combined empanadas array sorted from high to low: ".concat(combinedEmpanadas));
 };
 //Trying out the function
-fn(6, 2, 1);
+fn(2, 6, 1);
