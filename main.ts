@@ -1,4 +1,4 @@
-const fn = (a: number, b: number, c: number) => {
+export const fn = (a: number, b: number, c: number) => {
 
     var arrayEmpanadas: number[] = []
 
@@ -40,8 +40,17 @@ const fn = (a: number, b: number, c: number) => {
     for (let i = 0; i < combinedEmpanadas.length; i += 3){
         toBePaid.push(combinedEmpanadas[i])
     }
-    console.log(toBePaid);
+    console.log(`The empanadas that have to be paid ${toBePaid}`);
+
+    var finalPrice: number = 0
+
+    for (let empanada of toBePaid) {
+        finalPrice += empanada
+    }
+    console.log(`The total amount to be paid is €${finalPrice}`);
+
+return finalPrice
  };
 
  //Trying out the function
- fn(2, 6, 4)
+ fn(1, 1, 1)
