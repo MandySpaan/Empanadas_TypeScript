@@ -22,7 +22,7 @@ const fn = (a: number, b: number, c: number) => {
         let firstElement = arrayEmpanadas.shift() as number;
         let lastElement = arrayEmpanadas.pop() as number;
 
-        var newPrice: number = (firstElement + lastElement) / 2;
+        let newPrice: number = (firstElement + lastElement) / 2;
         combinedEmpanadas.push(newPrice, newPrice);
     }
 
@@ -34,7 +34,14 @@ const fn = (a: number, b: number, c: number) => {
 
     combinedEmpanadas.sort((a, b) => b - a)
     console.log(`Combined empanadas array sorted from high to low: ${combinedEmpanadas}`);
+
+    let toBePaid: number[] = [];
+
+    for (let i = 0; i < combinedEmpanadas.length; i += 3){
+        toBePaid.push(combinedEmpanadas[i])
+    }
+    console.log(toBePaid);
  };
 
  //Trying out the function
- fn(2, 6, 1)
+ fn(2, 6, 4)

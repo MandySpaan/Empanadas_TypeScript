@@ -23,6 +23,11 @@ var fn = function (a, b, c) {
     console.log("Combined empanadas array with new prices: ".concat(combinedEmpanadas));
     combinedEmpanadas.sort(function (a, b) { return b - a; });
     console.log("Combined empanadas array sorted from high to low: ".concat(combinedEmpanadas));
+    var toBePaid = [];
+    for (var i = 0; i < combinedEmpanadas.length; i += 3) {
+        toBePaid.push(combinedEmpanadas[i]);
+    }
+    console.log(toBePaid);
 };
 //Trying out the function
-fn(2, 6, 1);
+fn(2, 6, 4);
