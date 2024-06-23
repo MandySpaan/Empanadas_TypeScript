@@ -1,6 +1,5 @@
 const fn = (a: number, b: number, c: number) => {
 
-    //To turn the arguments into an array of empanadas
     var arrayEmpanadas: number[] = []
 
     for (let i: number = 0; i < a; i++){
@@ -16,6 +15,22 @@ const fn = (a: number, b: number, c: number) => {
     }
 
     console.log(`Arguments turned into an array with original prices: ${arrayEmpanadas}`)
+
+    var combinedEmpanadas: number[] = [];
+
+    while (arrayEmpanadas.length >= 2) {
+        let firstElement = arrayEmpanadas.shift() as number;
+        let lastElement = arrayEmpanadas.pop() as number;
+
+        var newPrice: number = (firstElement + lastElement) / 2;
+        combinedEmpanadas.push(newPrice, newPrice);
+    }
+
+    if (arrayEmpanadas.length == 1) {
+        combinedEmpanadas.push(arrayEmpanadas[0])
+    }
+
+    console.log(`Combined empanadas array with new prices: ${combinedEmpanadas}`);
 
  };
 
