@@ -2,6 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fn = void 0;
 var fn = function (a, b, c) {
+    if (a < 0 || b < 0 || c < 0) {
+        throw new Error("The inputs cannot have a negative value");
+    }
+    if ((a + b + c) % 3 !== 0) {
+        throw new Error("The total sum of the inputs has to be a multiple of 3");
+    }
+    if (a + b + c >= 40) {
+        throw new Error("The total sum of the inputs cannot be more than 40");
+    }
     var arrayEmpanadas = [];
     for (var i = 0; i < a; i++) {
         arrayEmpanadas.push(12);
@@ -40,5 +49,3 @@ var fn = function (a, b, c) {
     return finalPrice;
 };
 exports.fn = fn;
-//Trying out the function
-(0, exports.fn)(1, 1, 1);

@@ -1,5 +1,17 @@
 export const fn = (a: number, b: number, c: number) => {
 
+     if (a < 0 || b < 0 || c < 0) {
+        throw new Error("The inputs cannot have a negative value");
+     }
+
+    if ((a + b + c) %3 !== 0) {
+        throw new Error("The total sum of the inputs has to be a multiple of 3");
+    }
+
+    if (a + b + c >= 40) {
+        throw new Error("The total sum of the inputs cannot be more than 40");
+    }
+
     var arrayEmpanadas: number[] = []
 
     for (let i: number = 0; i < a; i++){
@@ -51,6 +63,3 @@ export const fn = (a: number, b: number, c: number) => {
 
 return finalPrice
  };
-
- //Trying out the function
- fn(1, 1, 1)
