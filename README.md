@@ -1,86 +1,108 @@
-# Compra de empanadas
+# Empanada Challenge
 
-## Enunciado del problema
+This project was originally made using JavaScript as part of a course Full Stack Developer for GeeksHubs Academy: [github.com/MandySpaan/GH_P3_LogicJS](https://github.com/MandySpaan/GH_P3_LogicJS)
 
-El profesor Maple se embarca en la tarea de adquirir empanadas para todos los participantes del bootcamp de programación. Dado que hoy es el Día de las Empanadas,  hay una oferta especial en la que te llevas hasta tres empanadas y solo pagas la más cara. Con un presupuesto ajustado para el curso, los profesores debaten para intentar minimizar el gasto total por todas las empanadas.
+I have after redone the project using TypeScript.
 
-Entonces, el profesor Maple decide seguir la siguiente estrategia: como la empanada más cara la tendrá que pagar de todas formas, la comprará junto a la segunda y tercera más caras, que ofrecen el mayor ahorro. Con las n-3 empanadas restantes, aplicará el mismo procedimiento hasta que no quede ninguna.
+## Index 🔍
 
-Los profesores reflexionan y llegan a la conclusión de que esta es la mejor estrategia. Pero cuando están a punto de pagar, escuchan la siguiente conversación de una familia de al lado:
+- [Assignment](#assignment-)
+- [My Thought Process](#my-thought-process-)
+- [How to Use](#how-to-use-️)
+- [Notes on TS Code](#notes-on-ts-code-)
 
-"Queremos una empanada de pollo, de 12 euros, una de carne, de 14 euros, y una vegetariana, de 16 euros."
+## Assignment 📝
 
-Los profesores piensan inmediatamente: "Cogerán la oferta 3x1, de forma que solo paguen los 16 euros de la empanada vegetariana y se lleven gratis la de carne y la de pollo". A lo cual, la familia continúa:
+The goal of this project was to calculate how to achieve the best deal for an empanada promotion. The following factors had to be taken into consideration:
 
-"Pero pónganosla de la siguiente forma: Dos empanadas mitad pollo y mitad vegetariana, y la de carne aparte. Como todas las empanadas valen 14 euros, cogeremos la oferta 3x1 y nos las llevaremos por 14 euros".
+- Promotion: get 3, pay only 1
+- The 1 to be paid is the most expensive of a group of 3
+- You can buy a maximum of 40 empanadas in total
+- The total of empanadas has to be dividable by 3
+- There are 3 different options, priced €12, €14 & €16
+- You can combine the empanadas ordering half / half:
+  - For example: if you have 1x €12, 1x €14 and 1x €16 <br>
+    Then 1x €12 and 1x €16 can be combined to reach<br>
+    a lower price of the most expensive empanada:<br>
+    - 0.5x €12 + 0.5x €16 = a new empanada worth €14<br>
+      which when ordered twice has the same content<br>
+      So 1x €12 and 1x €16 can be turned into 2x €14<br>
+      By making this combination, in the example, the highest <br>
+      price (and thus the best deal) became €14 instead of €16.
 
-Cuando los profesores salen de su asombro, deciden que lo más sensato es utilizar el hecho de que las empanadas se pueden pedir mitad de un tipo y mitad de otro, pagando por ella la media del costo de las dos empanadas enteras. Así, una empanada mitad pollo y mitad vegetariana valdrá (12 + 16)/2 = 14 euros. Sin embargo, no logran decidir cuál es la mejor forma de repartir las empanadas en mitades primero, y en grupos después, para minimizar el precio.
+You can find the full assignment (in Spanish) in the file [assignment.md](assignment.md).
 
-Ayúdales haciendo una función que lo calcule lo más rápido posible: hay decenas de estudiantes hambrientos que dependen de ti.
+---
 
-Las empanadas que han elegido los profesores tienen 3, 4 o 5 ingredientes. La masa de una empanada vale 6 euros, y cada ingrediente adicional vale 2 euros. Así, las empanadas pueden valer 12, 14 o 16 euros. Se garantiza que el número total de empanadas será múltiplo de 3.
+The following repository was cloned to be used a starting point: [the Empanada Challenge](https://github.com/GeeksHubsAcademy/javascript-empanadas-challenge).<br>
+This repository includes the following initial files:
 
-## Entrada
+- A main.js file with an empty function that takes 3 parameters (a, b, c)
+  - These parameters represent the quantity of empanadas <br>
+    (a) respresents priced at €12, (b) at €14 and (c) at €16
+- A main.test.js file that holds the tests that need to be completed
 
-La función debe tener tres parámetros de entrada. Cada conjunto de entrada consta de tres enteros, a b c, que son el número de empanadas de 3, 4 y 5 ingredientes, respectivamente. Se garantiza que el número de empanadas, a + b + c, cumple que a + b + c < 40. Además, el número de empanadas es divisible entre 3.
+## My Thought Process 💭
 
-## Salida
+The overall idea of how to get to the desired result:
 
-Por cada conjunto de entrada, retornar un único entero: la mínima cantidad de euros que se puede pagar para llevarse todas las empanadas.
+- Step 1: Translate the given input properties <i>(a, b, c)</i> into an array of items, where each item represents an empanada named as it's own price: <i>arrayEmpanadas</i>.
+- Step 2: Take <i>arrayEmpanadas</i> with the original prices and calculate the possible combinations to get to a new outcome of price per empanada. The new price per empanada has to turn the highest prices as low as possible. Then place these new prices into a new array: <i>combinedPrices</i>.
+- Step 3: Take the array <i>combinedPrices</i> and organize the order of its content (new price per empanada) from highest to lowest.
+- Step 4: From this now organized array <i>combinedPrices</i>, select chronologically every first of groups of three, and put this into a new array: <i>toBePaid</i>. This array now includes all the empanadas that have to be paid.
+- Step 5: Add all the items from the <i>toBePaid</i> together to come to the final price.
 
-## Ejemplos de casos de uso
+## How to Use ⚙️
 
-| Entrada     | Salida      |
-| ----------- | ----------- |
-| 1, 1, 1     | 14          |
-| 3, 3, 0     | 26          |
-| 2, 0, 1     | 14          |
-| 9, 10, 11   | 142         |
+### Installation
 
+To set up the project, follow these steps:
 
-## Instrucciones de uso
+1. Clone the repository:
 
-1. Clonar el repositorio
-3. Instalar las dependencias:
-
-    ```bash
-    npm install
-    ```
-
-4. Completar los argumentos y el cuerpo de la función `fn` en el archivo (`main.js`). No se debe renombrar la función `fn`.
-
-    ```javascript
-    // main.js
-    export const fn = (/* argumentos de la función */) => {
-    // Cuerpo de la función: Completa la lógica de la función aquí.
-    };
-    ```
-
-4. Ejecutar los test:
-    ```bash
-    npm run test
-    ```
-
-## Evaluación
-
-### Mínimo
-Para el APTO se deben pasar todos los test excepto los de validaciones de errores en la entrada de datos
-
-### Extra
-Pasar los test de validación de errores en la entrada de datos (Throws error)
-
-### Ejemplo de ejecución de algunos test
-
-```bash
-✓ main.test.js (7)
-   ✓ Function fn - Input Parameter Test Cases (7)
-     ✓ Case: fn(1, 1, 1) - Expected Result: 14
-     ✓ Case: fn(3, 3, 0) - Expected Result: 26
-     ✓ Case: fn(2, 0, 1) - Expected Result: 14
-     ✓ Case: fn(9, 10, 11) - Expected Result: 142
-     ✓ Throw error on negative input value: fn(-1, 3, 1)
-     ✓ Throws error when the total sum of inputs (2+2+1) is not a multiple of 3: fn(2, 2, 1)
-     ✓ Throws error when the total sum of inputs (15+15+20) is not less than 40: fn(15, 15, 20)
+```sh
+git clone https://github.com/MandySpaan/GH_P3.1_LogicTS.git
+cd GH_P3.1_LogicTS
 ```
 
- 
+2. Install the dependencies:
+
+```sh
+npm install
+```
+
+### Usage
+
+To use the function `fn`, you need to import it and call it with the required parameters. The function parameters are:
+
+- `a`: Number of empanadas of type 1 (costs 12 each)
+- `b`: Number of empanadas of type 2 (costs 14 each)
+- `c`: Number of empanadas of type 3 (costs 16 each)
+
+The function will calculate the optimal total price based on the following conditions:
+
+1. No input value can be negative.
+2. The sum of the inputs must be a multiple of 3.
+3. The sum of the inputs must be less than 40.
+
+### Running the Project
+
+To run the project and see the output:
+
+```sh
+npm start
+```
+
+### Running Tests
+
+The project includes a comprehensive set of test cases to ensure the function works correctly. We use Vitest for testing.
+
+To run the tests, use the following command:
+
+```sh
+npm test
+```
+
+## Notes on TS Code 💻
+
+For the sake of better understanding of how the code gets to the final result, I have added console logs at all steps earlier mentioned in [My Thought Process](#my-thought-process-).
